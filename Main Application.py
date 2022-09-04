@@ -3,6 +3,7 @@ import Admins
 import Test_Agents
 import Lab_Technicians
 import re
+import PySimpleGUI as sg
 import password_check
 import INDIA
 import Contact_us
@@ -26,25 +27,25 @@ mycursor.execute("commit")
 
 i = 1
 buttonsize = (10,4)
-while(i):
-   
-    import PySimpleGUI as sg
-    sg.theme('DarkTeal10')
-    layout = [[sg.Text(" ",size = (5, 1))],[sg.Text('COVID ANALYSIS', size = (40,1), font = ('Andale Mono', 20))],
+
+    
+sg.theme('DarkTeal10')
+layout = [[sg.Text(" ",size = (5, 1))],[sg.Text('COVID ANALYSIS', size = (40,1), font = ('Andale Mono', 20))],
         [sg.Submit("HOME")],
         [sg.Submit("USER MANUAL")],
         [sg.Submit("ABOUT US")],
         [sg.Submit("LOGIN")],
         [sg.Submit("EXIT")]]
-    window = sg.Window("Covid Analysis", layout, size=(325,300))
+window = sg.Window("Covid Analysis", layout, size=(325,300))
+while(i):
     event, a = window.read()
     option = event
     print(option)
     if(option == "HOME"):
         sg.popup(" Welcome to the Covid Data Analysis Home page. Here at the Data Analysis page, we have"
-            " developed a dynamic tool, invaluable for today's need. A really constructive source,"
-              " it will be of great convenience when it comes to administration of the high amount of "
-              " covid related data and its effective analysis. Being a growing tool, this vital product"
+                " developed a dynamic tool, invaluable for today's need. A really constructive source,"
+                  " it will be of great convenience when it comes to administration of the high amount of "
+                  " covid related data and its effective analysis. Being a growing tool, this vital product"
               " is currently limited to the region of India.")
     elif(option == "USER MANUAL"):
         sg.popup("This page basically serves as a crucial source of information for three categories of people,",
