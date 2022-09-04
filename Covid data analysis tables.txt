@@ -1,0 +1,173 @@
+mysql> use covid_data_analysis;
+Database changed
+mysql> describe patients;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| Record_ID | bigint       | NO   | PRI | NULL    |       |
+| Name      | varchar(50)  | NO   |     | NULL    |       |
+| Email_ID  | varchar(50)  | YES  |     | NULL    |       |
+| State     | varchar(70)  | NO   |     | NULL    |       |
+| District  | varchar(70)  | NO   |     | NULL    |       |
+| Unit_Name | varchar(100) | YES  |     | NULL    |       |
+| Address   | varchar(250) | NO   |     | NULL    |       |
+| Mobile_No | bigint       | NO   |     | NULL    |       |
+| Age_Group | varchar(20)  | NO   |     | NULL    |       |
+| Gender    | varchar(10)  | NO   |     | NULL    |       |
+| Date      | date         | NO   |     | NULL    |       |
+| Month     | varchar(20)  | NO   |     | NULL    |       |
+| TA_Emp_No | bigint       | NO   |     | NULL    |       |
+| LT_Emp_No | bigint       | YES  |     | NULL    |       |
+| Test_Type | varchar(80)  | YES  |     | NULL    |       |
+| Result    | varchar(15)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+16 rows in set (0.06 sec)
+
+mysql> select* from patients;
++-------------+----------------------+-----------------------------+-------------+-----------------+------------------------------------+----------------------------------------------------------------------------------+--------------+--------------+--------+------------+-----------+-----------+-----------+--------------+----------+
+| Record_ID   | Name                 | Email_ID                    | State       | District        | Unit_Name                          | Address                                                                          | Mobile_No    | Age_Group    | Gender | Date       | Month     | TA_Emp_No | LT_Emp_No | Test_Type    | Result   |
++-------------+----------------------+-----------------------------+-------------+-----------------+------------------------------------+----------------------------------------------------------------------------------+--------------+--------------+--------+------------+-----------+-----------+-----------+--------------+----------+
+| 22000120000 | Test                 | testing@check.org           | -           | -               | NULL                               | -                                                                                | 123456789011 | -            | -      | 2020-10-19 | October   |  10000000 |   1000000 | -            | -        |
+| 22000120001 | RAKESH RAMAN         | rakeshraman@gmail.com       | Kerala      | Pathanamthitta  | District Hospital,Kozhencherry     | Puthenveetil, Thazhoorkadavu Rd, Pathanamthitta, Kerala 689645                   | 912228052849 | 18 and above | Male   | 2022-09-02 | September |   1000001 |   1000001 | RDT          | Negative |
+| 22000120002 | RANJINI RAKESH       | ranjrakesh@gmail.com        | Kerala      | Pathanamthitta  | District Hospital,Kozhencherry     | Puthenveetil, Thazhoorkadavu Rd, Pathanamthitta, Kerala 689645                   | 917922743567 | 18 and above | Female | 2022-09-02 | September |   1000001 |   1000001 | RDT          | Positive |
+| 22000120003 | RAHUL MEHTA          | rahulmeh2002@outlook.com    | Maharashtra | Mumbai Suburban | District Hospital,Kozhencherry     | Laxmi Udyog Nagar, Kanjurmarg West, Bhandup West                                 | 911130947040 | 18 and above | Male   | 2022-09-02 | September |   1000001 |   1000001 | PCR test     | Positive |
+| 22000120004 | VARADHA LAKSHMI      | varadha1980@gmail.com       | Kerala      | Ernakulam       | District Hospital,Kozhencherry     | Near Shanthigiri Ashram, Palarivattom, Kochi, Kerala 682025                      | 918022245457 | 18 and above | Female | 2022-09-02 | September |   1000001 |   1000001 | PCR test     | Negative |
+| 22000120005 | ROSEMARY ALEX        | rosemary2006@gmail.com      | Kerala      | Kottayam        | District Hospital,Kozhencherry     | Thavalakuzhy, Ettumanoor, Kottayam, Kerala 686631                                | 914027812409 | 12-17        | Female | 2022-09-02 | September |   1000001 |   1000001 | PCR test     | Positive |
+| 22000120006 | REJU JOSEPH          | rejosph066@gmail.com        | Kerala      | Pathanamthitta  | District Hospital,Kozhencherry     | Nedumprayar, Maramon                                                             | 917862542871 | 12-17        | Male   | 2022-09-03 | September |   1000001 |   1000001 | PCR test     | Positive |
+| 22000120007 | ROHITH SHARMA        | sharmaji977@gmail.com       | Kerala      | Ernakulam       | District Hospital,Kozhencherry     | S Railway Station Rd, Shenoys, Kochi, Kerala 682016                              | 914693482572 | 18 and above | Male   | 2022-09-03 | September |   1000001 |   1000001 | RDT          | Negative |
+| 22000120008 | SHIVADAS NAMBOOTHIRI | -                           | Kerala      | Thrissur        | District Hospital,Kozhencherry     | Carmel Park, Sakthan Thampuran Nagar, Kuriachira, Thrissur, Kerala 680006        | 918436029877 | 65 and above | Male   | 2022-09-03 | September |   1000001 |   1000001 | PCR test     | Positive |
+| 22000120009 | VIJU SUNIL           | vijusunilkt1998@outlook.com | Kerala      | Kollam          | District Hospital,Kozhencherry     | NTV Nagar, Kadapakkada, Kollam, Kerala 691008                                    | 914683752098 | 18 and above | Male   | 2022-09-03 | September |   1000001 |   1000001 | PCR test     | Positive |
+| 22000120010 | CHANDRIKA SURESH     | -                           | Kerala      | Malappuram      | District Hospital,Kozhencherry     | Tank Road, Kavumpuram,itthilparambu, Malappuram, Kerala 676505                   | 918339972483 | 18 and above | Female | 2022-09-03 | September |   1000001 |   1000001 | Antigen test | Negative |
+| 22000120011 | ABIN SUNNY           | abinsunny123@outlook.com    | Kerala      | Kozhikode       | District Hospital,Kozhencherry     | E Mankavu Rd, Mankave, Kozhikode, Kerala 673007                                  | 919776347819 | 2-11         | Male   | 2022-09-03 | September |   1000001 |   1000001 | PCR test     | Negative |
+| 22000120012 | ROHAN CHAUHAN        | rohanchauhan@gmail.com      | Maharashtra | Mumbai City     | Nanavati Super Speciality Hospital | Near Ganesh Temple, Gandhi Nagar, Upper Worli, Worli, Mumbai, Maharashtra 400018 | 913467346234 | 12-17        | Male   | 2022-09-04 | September |   1000003 |   1000007 | Antigen test | Positive |
+| 22000120013 | LAKSHMI RAI          | lakshmirai208@gmail.com     | Maharashtra | Mumbai Suburban | Nanavati Super Speciality Hospital | Sahar Village, Andheri East, Mumbai, Maharashtra 400099                          | 913874623874 | 12-17        | Female | 2022-09-04 | September |   1000003 |   1000007 | PCR test     | Positive |
+| 22000120014 | SHREYA GHOSH         | -                           | Karnataka   | Bengaluru Rural | Nanavati Super Speciality Hospital | Dr. S.M College of Engineering,Kammasandra, Karnataka 562132                     | 912783246283 | 18 and above | Female | 2022-09-04 | September |   1000003 |   1000007 | Antigen test | Positive |
+| 22000120015 | SHAJEE BEN           | shajeeben222@outlook.com    | Tamil Nadu  | Kanyakumari     | District Hospital,Kozhencherry     | Our Lady Of Pillar Hospital, 6/106-d, Kanyakumari, Tamil Nadu 629702             | 914623643223 | 18 and above | Male   | 2022-09-04 | September |   1000001 |   1000001 | PCR test     | Positive |
++-------------+----------------------+-----------------------------+-------------+-----------------+------------------------------------+----------------------------------------------------------------------------------+--------------+--------------+--------+------------+-----------+-----------+-----------+--------------+----------+
+16 rows in set (0.01 sec)
+
+mysql> describe test_agents;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Agent_Name  | varchar(40)  | NO   |     | NULL    |       |
+| Gender      | varchar(15)  | NO   |     | NULL    |       |
+| Mobile_No   | bigint       | NO   |     | NULL    |       |
+| Email_ID    | varchar(40)  | NO   | UNI | NULL    |       |
+| TA_Emp_No   | bigint       | NO   | PRI | NULL    |       |
+| Username    | varchar(40)  | NO   | UNI | NULL    |       |
+| Password    | varchar(40)  | NO   |     | NULL    |       |
+| State       | varchar(70)  | NO   |     | NULL    |       |
+| District    | varchar(70)  | NO   |     | NULL    |       |
+| Test_Center | varchar(40)  | NO   |     | NULL    |       |
+| Unit_Name   | varchar(100) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> select* from test_agents;
++------------------+--------+--------------+--------------------------+-----------+--------------+-------------------------+-------------+-----------------+---------------------------+------------------------------------+
+| Agent_Name       | Gender | Mobile_No    | Email_ID                 | TA_Emp_No | Username     | Password                | State       | District        | Test_Center               | Unit_Name                          |
++------------------+--------+--------------+--------------------------+-----------+--------------+-------------------------+-------------+-----------------+---------------------------+------------------------------------+
+| DR.TESTER        | -      | 123456789011 | tester@agent.org         |   1000000 | test1234     | agent@1234              | -           | -               | test_center               | hospital                           |
+| DR.JOHN JACOB    | Male   | 919446381394 | jonjacob756@gmail.com    |   1000001 | jjacob333    | test@check1234          | Kerala      | Pathanamthitta  | Mobile Unit               | District Hospital,Kozhencherry     |
+| DR.GEORGE JOBY   | Male   | 917582738990 | gjpauh@gmail.com         |   1000002 | gjoby968     | george.jpauh5           | Karnataka   | Bengaluru Urban | Government Hospital       | Government Hospital,J.P Nagar      |
+| DR.DEEPIKA KUMAR | Female | 917943626544 | deepikumar@outlook.com   |   1000003 | dkumar 001   | #its.deepika.747here    | Maharashtra | Mumbai City     | Private Healthcare Center | Nanavati Super Speciality Hospital |
+| DR.JOSEPH VIJAY  | Male   | 919600193945 | vijayjoseph960@gmail.com |   1000004 | jvijay789    | #fejoseph@6DR           | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| KUMAR PANICKER   | Male   | 912489062748 | p_kumar48@gmail.com      |   1000005 | pkumar4848   | #p^kumar4848            | Kerala      | Pathanamthitta  | Mobile Unit               | District Hospital,Kozhencherry     |
+| KS MURALI        | Male   | 914689870231 | muralidharanks@gmail.com |   1000006 | KSmurali9870 | murali@covidtest9870    | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| DR.HIMA MANISH   | Female | 918604395382 | drmanishima@gmail.com    |   1000007 | manishima68  | hima.dr.68              | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| DR.YAMUNA GUPTA  | Female | 918201292031 | yamuna_gupta@outlook.com |   1000008 | yamupta2012  | my_passwordis2012       | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| SAGAR JACKY      | Male   | 916350133734 | sagar_jacky734@gmail.com |   1000009 | sjacky734    | jsaga_734               | Karnataka   | Bengaluru Urban | Government Hospital       | Government Hospital,J.P Nagar      |
+| ADARSH VENKAT    | Male   | 919585513803 | adarsh2009@gmail.com     |   1000010 | appleshakey1 | excalibur_warframe_2003 | Kerala      | Pathanamthitta  | Government Hospital       | District Hospital,Kozhencherry     |
++------------------+--------+--------------+--------------------------+-----------+--------------+-------------------------+-------------+-----------------+---------------------------+------------------------------------+
+11 rows in set (0.00 sec)
+
+mysql> describe lab_technicians;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Agent_Name  | varchar(40)  | NO   |     | NULL    |       |
+| Gender      | varchar(15)  | NO   |     | NULL    |       |
+| Mobile_No   | bigint       | NO   |     | NULL    |       |
+| Email_ID    | varchar(40)  | NO   | UNI | NULL    |       |
+| LT_Emp_No   | bigint       | NO   | PRI | NULL    |       |
+| Username    | varchar(40)  | NO   | UNI | NULL    |       |
+| Password    | varchar(40)  | NO   |     | NULL    |       |
+| State       | varchar(70)  | NO   |     | NULL    |       |
+| District    | varchar(70)  | NO   |     | NULL    |       |
+| Test_Center | varchar(40)  | NO   |     | NULL    |       |
+| Unit_Name   | varchar(100) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> select* from lab_technicians;
++--------------------+--------+--------------+-----------------------------+-----------+-----------------+------------------+-------------+-----------------+---------------------------+------------------------------------+
+| Agent_Name         | Gender | Mobile_No    | Email_ID                    | LT_Emp_No | Username        | Password         | State       | District        | Test_Center               | Unit_Name                          |
++--------------------+--------+--------------+-----------------------------+-----------+-----------------+------------------+-------------+-----------------+---------------------------+------------------------------------+
+| DR.LAB TECHNICIAN  | -      | 123456789011 | lab@technician.org          |   1000000 | labtech1234     | lab@tech1234     | -           | -               | test_center               | hospital                           |
+| DR.NAZRIYA HUSSAIN | Female | 918653359014 | nhussain009@outlook.com     |   1000001 | NazriyaH995     | nazriya.huss*500 | Karnataka   | Bengaluru Urban | Government Hospital       | Government Hospital,J.P Nagar      |
+| DR.HUSSAIN AHMED   | Male   | 918653359015 | hussainahmed900@outlook.com |   1000002 | hussainAh015    | huss@015labtech  | Karnataka   | Bengaluru Urban | Government Hospital       | Government Hospital,J.P Nagar      |
+| ABRAHAM MATHEWS    | Male   | 918136895534 | mathewsabraham@gmail.com    |   1000003 | Abrahamathew050 | abraham!999      | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| DR.DEEPA SUNDAR    | Female | 918963572107 | deepasundar232@outlook.com  |   1000004 | sdeepa232       | $deepas@232      | Kerala      | Pathanamthitta  | Mobile Unit               | District Hospital,Kozhencherry     |
+| DR.SAROSH KUMAR    | Male   | 914850423528 | saroshkumar@outlook.com     |   1000005 | sarosh28kumar   | %sarosh^28^kumar | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| DR.SHILPA GEORGE   | Female | 915105890100 | shilpageorge@gmail.com      |   1000006 | gshilpa100      | #georgeshilpa100 | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai            |
+| DR.RADHA S         | Female | 913246238746 | drradhas2092@gmail.com      |   1000007 | radas2092       | dr.radas@1972    | Maharashtra | Mumbai City     | Private Healthcare Center | Nanavati Super Speciality Hospital |
++--------------------+--------+--------------+-----------------------------+-----------+-----------------+------------------+-------------+-----------------+---------------------------+------------------------------------+
+8 rows in set (0.01 sec)
+
+mysql> describe admins;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Admin_Name  | varchar(40)  | NO   |     | NULL    |       |
+| Gender      | varchar(15)  | NO   |     | NULL    |       |
+| Mobile_No   | bigint       | NO   |     | NULL    |       |
+| Email_ID    | varchar(40)  | NO   | UNI | NULL    |       |
+| AD_Emp_No   | bigint       | NO   | PRI | NULL    |       |
+| Username    | varchar(40)  | NO   | UNI | NULL    |       |
+| Password    | varchar(40)  | NO   |     | NULL    |       |
+| State       | varchar(70)  | NO   |     | NULL    |       |
+| District    | varchar(70)  | NO   |     | NULL    |       |
+| Test_Center | varchar(40)  | NO   |     | NULL    |       |
+| Unit_Name   | varchar(100) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> select* from admins;
++------------------+--------+--------------+------------------------------+-----------+--------------+-------------------+-------------+-----------------+---------------------------+---------------------------------------------+
+| Admin_Name       | Gender | Mobile_No    | Email_ID                     | AD_Emp_No | Username     | Password          | State       | District        | Test_Center               | Unit_Name                                   |
++------------------+--------+--------------+------------------------------+-----------+--------------+-------------------+-------------+-----------------+---------------------------+---------------------------------------------+
+| DR.ADMIN         | -      | 123456789011 | admin@hospital.org           |      1000 | admin1234    | admin@hosp1234    | -           | -               | test_center               | hospital                                    |
+| DR.ABHINAV SUDHI | Male   | 914687396565 | abhinavsudi@outlook.com      |      1001 | Abhinavs055  | $Abhinasudhi^055$ | Karnataka   | Bengaluru Urban | Government Hospital       | Government Hospital,J.P.Nagar               |
+| DR.KRISHNA MOHAN | Female | 914927655393 | mohankrishh_232@gmail.com    |      1002 | KRmohan22    | passwordis@1234   | Kerala      | Pathanamthitta  | Government Hospital       | District Hospital,Kozhencherry              |
+| DR.DEVA DAS      | Male   | 913297862532 | devdasachanv@gmail.com       |      1003 | ddasdev268   | covid-19@test     | Tamil Nadu  | Chennai         | Private Healthcare Center | Apollo Hospital,Chennai                     |
+| RAVUTHUR SINGH   | Male   | 918462824466 | ravuthur_singh1999@gmail.com |      1004 | ravsingh1999 | rav@1999singh     | Delhi       | Central Delhi   | Private Healthcare Center | NKS Super Speciality Hospital,Central Delhi |
+| LEENA JOHN       | Female | 918563476234 | leenajohn2002@gmail.com      |      1005 | leenajn256   | leena.john@2002   | Maharashtra | Mumbai City     | Private Healthcare Center | Nanavati Super Speciality Hospital          |
++------------------+--------+--------------+------------------------------+-----------+--------------+-------------------+-------------+-----------------+---------------------------+---------------------------------------------+
+6 rows in set (0.04 sec)
+
+mysql> describe super_admins;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| ADMIN_Name | varchar(40) | NO   |     | NULL    |       |
+| Gender     | varchar(20) | NO   |     | NULL    |       |
+| Mobile_No  | bigint      | NO   |     | NULL    |       |
+| Email_ID   | varchar(40) | NO   | UNI | NULL    |       |
+| SA_Emp_No  | bigint      | NO   | PRI | NULL    |       |
+| Username   | varchar(40) | NO   | UNI | NULL    |       |
+| Password   | varchar(40) | NO   |     | NULL    |       |
+| State      | varchar(70) | NO   |     | NULL    |       |
+| District   | varchar(70) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select* from super_admins;
++-----------------------+--------+--------------+--------------------------------+------------+-----------------+---------------+------------+----------------+
+| ADMIN_Name            | Gender | Mobile_No    | Email_ID                       | SA_Emp_No  | Username        | Password      | State      | District       |
++-----------------------+--------+--------------+--------------------------------+------------+-----------------+---------------+------------+----------------+
+| ASWIN SUJITH VARGHESE | Male   | 917559988111 | aswinsujith@gmail.com          | 7559988111 | niwsa365        | ash@503.#     | Kerala     | Pathanamthitta |
+| ADARSH A              | Male   | 918870342500 | adarshnikhil181@gmail.com      | 7559988600 | user__adarsh181 | adarsh@181    | Tamil Nadu | Coimbatore     |
+| VIGNESH S             | Male   | 918891873500 | vvigneshsenthilrajan@gmail.com | 7559988700 | vigneshs233     | vicky@2004    | Tamil Nadu | Chennai South  |
++-----------------------+--------+--------------+--------------------------------+------------+-----------------+---------------+------------+----------------+
+3 rows in set (0.00 sec)
