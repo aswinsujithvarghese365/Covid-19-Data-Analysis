@@ -36,7 +36,7 @@ layout = [[sg.Text(" ",size = (5, 1))],[sg.Text('COVID ANALYSIS', size = (40,1),
         [sg.Submit("ABOUT US")],
         [sg.Submit("LOGIN")],
         [sg.Submit("EXIT")]]
-window = sg.Window("Covid Analysis", layout, size=(325,300))
+window = sg.Window("Covid Data Analysis", layout, size=(325,300))
 while(i):
     event, a = window.read()
     option = event
