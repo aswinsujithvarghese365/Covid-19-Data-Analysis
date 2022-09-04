@@ -15,7 +15,7 @@ import sqlalchemy
 from sqlalchemy import create_engine
 
 cnx=create_engine('mysql+mysqlconnector://root:ash@503.#@localhost:3306/Covid_Data_Analysis')
-
+# Connecting Python with MySQL
 mydb=mysql.connector.connect(host="localhost",
                             user="root",
                             password="ash@503.#",
@@ -26,9 +26,9 @@ mycursor.execute("commit")
 
 
 i = 1
-buttonsize = (10,4)
+buttonsize = (10,4) # Declaring Button Size
 
-    
+# Creating Window and buttons 
 sg.theme('DarkTeal10')
 layout = [[sg.Text(" ",size = (5, 1))],[sg.Text('COVID ANALYSIS', size = (40,1), font = ('Andale Mono', 20))],
         [sg.Submit("HOME")],
@@ -42,12 +42,14 @@ while(i):
     option = event
     print(option)
     if(option == "HOME"):
+        # Home page content
         sg.popup(" Welcome to the Covid Data Analysis Home page. Here at the Data Analysis page, we have"
                 " developed a dynamic tool, invaluable for today's need. A really constructive source,"
                   " it will be of great convenience when it comes to administration of the high amount of "
                   " covid related data and its effective analysis. Being a growing tool, this vital product"
               " is currently limited to the region of India.")
     elif(option == "USER MANUAL"):
+        #User Manual page content
         sg.popup("This page basically serves as a crucial source of information for three categories of people,",
                  "",
                  "Administrators: The administrators of the web page are given several privileges over"
@@ -65,6 +67,7 @@ while(i):
               "     provided that it was tested in a mobile unit."
                  )
     elif(option == "ABOUT US"):
+        # About Us page content
             sg.popup("About us",
                      "Get In Touch With Us",
                      "",
@@ -84,6 +87,7 @@ while(i):
             )
 
     elif(option == "LOGIN"):
+        # Directing to Login page
         window.close()
         i = 0;
         layout = [[sg.Text("Please Enter the user type ")], 
@@ -98,18 +102,22 @@ while(i):
         window.close()
         window.close()
         if (option == "ADMIN"):
+            # Admins Login page and rights
             Admins.admins()
             
 
         elif (option == "SUPER ADMIN"):
+            # Super-Admins Login page and rights
             Super_Admins.super_admin()
             
 
         elif (option == "TEST AGENT"):
+            # Test Agents Login page and rights
             Test_Agents.test_agents()
             
             
         elif ( option == "LAB TECHNICIAN"):
+            # Lab Technicians Login page and rights
             Lab_Technicians.lab_techs()
             
             
